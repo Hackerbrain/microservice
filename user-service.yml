@@ -1,2 +1,8 @@
 custom:
     message: Hello-world-new-changed-avcf
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health
