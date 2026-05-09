@@ -15,7 +15,7 @@ eureka:
 
 spring:
     cloud:
-         gateway:
+        gateway:
             routes:
                 - id: order-service-route
                   uri: lb://ORDER-SERVICE 
