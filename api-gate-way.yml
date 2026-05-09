@@ -27,13 +27,13 @@ spring:
                 - id: payment-service-route
                   uri: lb://PAYMENT-SERVICE 
                   predicates: 
-                    - Path=/order-service/**
+                    - Path=/payment-service/**
                   filters:
                     - StripPrefix=1
 
                 - id: user-service-route
                   uri: lb://USER-SERVICE 
                   predicates: 
-                    - Path=/order-service/**
+                    - Path=/user-service/**
                   filters:
                     - StripPrefix=1 
