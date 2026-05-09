@@ -1,0 +1,39 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health
+
+eureka:
+    instance:
+        prefer-ip-address: true
+    client:
+        fetch-registry: true
+        register-with-eureka: true
+        service-url: 
+            defaultZone: http://localhost:8761/eureka
+
+spring:
+    cloud:
+         gateway:
+            routes:
+                - id: order-service-route
+                  uri: lb://ORDER-SERVICE 
+                  predicates: 
+                    - Path=/order-service/**
+                  filters:
+                    - StripPrefix=1  
+
+                - id: payment-service-route
+                  uri: lb://PAYMENT-SERVICE 
+                  predicates: 
+                    - Path=/order-service/**
+                  filters:
+                    - StripPrefix=1
+
+                - id: user-service-route
+                  uri: lb://USER-SERVICE 
+                  predicates: 
+                    - Path=/order-service/**
+                  filters:
+                    - StripPrefix=1 
